@@ -1,5 +1,6 @@
 using System;
 using mindboxLib.Models.Base;
+using static mindboxLib.Extensions.MyExtensions;
 
 namespace mindboxLib.Models
 {
@@ -12,9 +13,9 @@ namespace mindboxLib.Models
         public Triangle(double a, double b, double c)
         {
             if (!(a + b > c) || !(a + c > b) || !(b + c > a))
-                throw new NotImplementedException("This is not a triangle.");
+                throw new ArgumentException("This is not a triangle.");
             if (a <= 0 || b <= 0 || c <= 0)
-                throw new NotImplementedException("Negative or zero length.");
+                throw new ArgumentException("Negative or zero length.");
             _a = a;
             _b = b;
             _c = c;
@@ -28,9 +29,8 @@ namespace mindboxLib.Models
             return Math.Sqrt(semiPer * (semiPer - a) * (semiPer - b) * (semiPer - c));
         }
 
-        public bool RightAngled() => (Math.Pow(_a, 2) == Math.Pow(_b, 2) + Math.Pow(_c, 2)) ||
-                                     (Math.Pow(_b, 2) == Math.Pow(_a, 2) + Math.Pow(_c, 2)) ||
-                                     (Math.Pow(_c, 2) == Math.Pow(_a, 2) + Math.Pow(_b, 2));
+        public bool RightAngled() => (NearlyEqual(Math.Pow(_a, 2), Math.Pow(_b, 2) + Math.Pow(_c, 2)) ||
+                                      NearlyEqual(Math.Pow(_b, 2), Math.Pow(_a, 2) + Math.Pow(_c, 2)) ||
+                                      NearlyEqual(Math.Pow(_c, 2), Math.Pow(_a, 2) + Math.Pow(_b, 2)));
     }
-
 }

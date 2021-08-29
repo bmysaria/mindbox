@@ -10,7 +10,7 @@ namespace mindboxLib.Models
         public Circle(double radius)
         {
             if (radius <= 0)
-                throw new NotImplementedException("This is not a circle.");
+                throw new ArgumentException("This is not a circle.");
             _radius = radius;
         }
 
