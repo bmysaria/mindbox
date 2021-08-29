@@ -4,3 +4,5 @@ mindboxLib/obj
 .DS_Store
 .git
 .idea
+mindboxLib.Tests/bin
+mindboxLib.tests/obj
