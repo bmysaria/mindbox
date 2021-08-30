@@ -29,8 +29,9 @@ namespace mindboxLib.Models
             return Math.Sqrt(semiPer * (semiPer - a) * (semiPer - b) * (semiPer - c));
         }
 
-        public bool RightAngled() => (NearlyEqual(Math.Pow(_a, 2), Math.Pow(_b, 2) + Math.Pow(_c, 2)) ||
-                                      NearlyEqual(Math.Pow(_b, 2), Math.Pow(_a, 2) + Math.Pow(_c, 2)) ||
-                                      NearlyEqual(Math.Pow(_c, 2), Math.Pow(_a, 2) + Math.Pow(_b, 2)));
+        private bool Pythagorean(double hypotenuse, double side1, double side2) =>
+            (NearlyEqual(Math.Pow(hypotenuse, 2), Math.Pow(side1, 2) + Math.Pow(side2, 2)));
+        public bool RightAngled() => (_a > _b && _a > _c ? Pythagorean(_a, _b, _c) : 
+            (_b > _a && _b > _c ? Pythagorean(_b, _a, _c) : Pythagorean(_c, _a, _b)));
     }
 }

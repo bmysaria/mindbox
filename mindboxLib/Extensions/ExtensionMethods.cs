@@ -4,13 +4,9 @@ namespace mindboxLib.Extensions
 {
     public static class MyExtensions
     {
-        public static bool NearlyEqual(double a, double b)
-        {
-            if (a == b)
-                return true;
-            if (a - Double.Epsilon < b && b < a + Double.Epsilon)
-                return true;
-            return false;
-        }
+        public static readonly double TargetPrecision = Math.Pow(2.0, -42);
+        
+        public static bool NearlyEqual(double x, double y) =>
+            (2.0 * Math.Abs(x - y) <= TargetPrecision * (Math.Abs(x) + Math.Abs(y)));
     }
 }

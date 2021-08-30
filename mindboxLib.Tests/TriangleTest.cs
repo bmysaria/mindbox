@@ -29,15 +29,24 @@ namespace mindboxLib.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void RightAngledTriangle()
+        public void RightAngledTriangle1()
         {
-            var triangle = new Triangle(3, 4, 5.000000000000001);
-
+            var triangle = new Triangle(3, 4, 5);
+            
             var expected = true;
 
             var actual = triangle.RightAngled();
 
-            Console.WriteLine(actual);
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void RightAngledTriangle2()
+        {
+            var triangle = new Triangle(6.119473782801, 2.292395227273, 5.673877289858);
+            
+            var expected = true;
+
+            var actual = triangle.RightAngled();
 
             Assert.Equal(expected, actual);
         }
