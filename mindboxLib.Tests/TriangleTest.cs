@@ -6,19 +6,8 @@ namespace mindboxLib.Tests
 {
     public class TriangleTest
     {
-        //[Fact]
-        // public void InvalidTriangle1()
-        // {
-        //     var triangle1 = new Triangle(50, 10, 10);
-        // }
-        //
-        // [Fact]
-        // public void InvalidTriangle2()
-        // {
-        //     var triangle2 = new Triangle(-5, 5, 5);
-       // }
         [Fact]
-        public void ComputeTriangleArea1()
+        public void ComputeTriangleArea()
         {
             var triangle = new Triangle(5.05, 5.15, 6.001);
 
@@ -28,10 +17,12 @@ namespace mindboxLib.Tests
 
             Assert.Equal(expected, actual);
         }
-        [Fact]
-        public void RightAngledTriangle1()
+        [Theory]
+        [InlineData(3, 4, 5)]
+        [InlineData(6.119473782801, 2.292395227273, 5.673877289858)]
+        public void RightAngledTriangle(double a, double b, double c)
         {
-            var triangle = new Triangle(3, 4, 5);
+            var triangle = new Triangle(a, b, c);
             
             var expected = true;
 
@@ -40,11 +31,11 @@ namespace mindboxLib.Tests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void RightAngledTriangle2()
+        public void RegularTriangle()
         {
-            var triangle = new Triangle(6.119473782801, 2.292395227273, 5.673877289858);
+            var triangle = new Triangle(2, 3, 4);
             
-            var expected = true;
+            var expected = false;
 
             var actual = triangle.RightAngled();
 

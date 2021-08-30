@@ -12,10 +12,10 @@ namespace mindboxLib.Models
 
         public Triangle(double a, double b, double c)
         {
-            if (!(a + b > c) || !(a + c > b) || !(b + c > a))
-                throw new ArgumentException("This is not a triangle.");
             if (a <= 0 || b <= 0 || c <= 0)
                 throw new ArgumentException("Negative or zero length.");
+            if (!(a + b > c) || !(a + c > b) || !(b + c > a))
+                throw new ArgumentException("This is not a triangle.");
             _a = a;
             _b = b;
             _c = c;
