@@ -26,7 +26,10 @@ namespace mindboxLib.Models
         private static double TriangleArea(double a, double b, double c)
         {
             var semiPer = (a + b + c) / 2;
-            return Math.Sqrt(semiPer * (semiPer - a) * (semiPer - b) * (semiPer - c));
+            var res = Math.Sqrt(semiPer * (semiPer - a) * (semiPer - b) * (semiPer - c));
+            if (double.IsPositiveInfinity(res))
+                throw new OverflowException("An overflow occured.");
+            return res;
         }
 
         private bool Pythagorean(double hypotenuse, double side1, double side2) =>
